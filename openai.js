@@ -120,8 +120,10 @@ window.vincentOpenAI = (function() {
           resultsWrapper = document.querySelector(`.${selectors.resultsWrapper}`),
           firstClearButton = resultsWrapper.querySelector(`.${selectors.clearButton}`);
 
+    if (!results || !results.choices || results.choices.length === 0) { return; }
+
     // alter the data attribute of our wrapper to display heading
-    if (results.choices.length >= 1) { resultsWrapper.dataset.results = true; }
+    resultsWrapper.dataset.results = true;
 
     results.choices.forEach((answer) => {
       const container = renderSingleResult(question, answer.text);
