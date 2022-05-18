@@ -19,7 +19,7 @@ window.vincentOpenAI = (function() {
   },
 
   settings = {
-    apiKey: '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',
+    apiKey: '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',
   },
 
   clearError = () => {
