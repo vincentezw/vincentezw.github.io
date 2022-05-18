@@ -1,0 +1,50 @@
+<!doctype html>
+<html class="no-js"
+  <head>
+    <title>Vincent's OpenAI playground</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <style>
+      html.no-js .vincent-openai__prompt-wrapper, html.no-js .vincent-openai__results-wrapper {
+        display: none;
+      }
+
+      body {
+        background-color: white;
+      }
+    </style>
+
+    <link rel="preload" href="styles.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'"
+    <script src='openai.js' defer/>
+  </head>
+  <body>
+    <div class="page-width">
+      <h2>Open AI playground</h2>
+
+      <noscript>
+        Please enable Javascript in your browser to use this feature
+      </noscript>
+  
+      <form class='vincent-openai__prompt-wrapper'>
+        <label>
+          Enter a sentencte (or choose a suggestion below):
+          <span class='vincent-openai__prompt-suggestion-wrapper'>
+            <span class='vincent-openai__prompt-suggestion'>What's the best pizza topping?</span>
+            <span class='vincent-openai__prompt-suggestion'>Who is your favourite superhero?</span>
+          </span>
+          <textarea class='vincent-openai__prompt'></textarea>
+        </label>
+        <span class='vincent-openai__error'></span>
+        <button type='submit' class='vincent-openai__submit'>Submit</button>
+      </form>
+      <div class='vincent-openai__results-wrapper' data-results="false">
+        <h3>Results</h3>
+        <button class='vincent-openai__results-clear'>(clear results)</button>
+        <button class='vincent-openai__results-clear'>clear results</button>
+      </div>
+    </div>
+  </body>
+</html>

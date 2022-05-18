@@ -1,0 +1,180 @@
+.vincent-openai__prompt-wrapper {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.vincent-openai__prompt-suggestion-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5em 0;
+}
+
+.vincent-openai__prompt-suggestion {
+  border: 1px solid black;
+  border-radius: 1em;
+  background-color: rgba(100,80,120,0.5);
+  font-size: 0.7em;
+  padding: 0.2em 0.4em;
+  margin-right: 0.4em;
+}
+
+.vincent-openai__prompt-suggestion:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.vincent-openai__prompt-wrapper > label {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9em;
+  margin: 1em 0;
+  width: 100%;
+}
+
+.vincent-openai__prompt {
+  background-color: rgba(90, 90, 190, 0.4);
+  border: 1px solid black;
+  width: 100%; 
+}
+
+.vincent-openai__prompt:focus, .vincent-openai__prompt:active {
+  background-color: rgba(40, 40, 200, 0.5);
+}
+
+.vincent-openai__prompt-wrapper > button, .vincent-openai__results-clear {
+  background-color: rgba(100, 100, 240, 0.7);
+  border: 2px solid black;
+  height: 40px;
+  transition: all 500ms ease;
+  width: 150px; 
+}
+
+.vincent-openai__prompt-wrapper > button:hover, .vincent-openai__results-clear:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.vincent-openai__error {
+  color: red;
+  display: none;
+  font-style: bold;
+  margin-bottom: 1em;
+}
+
+.vincent-openai__error[data-toggled="true"] {
+  animation: pulse 0.3s 4;
+}
+
+.vincent-openai__error[data-show-error="true"] { display: block; }
+
+.vincent-openai__results-wrapper { margin: 1em 0; }
+
+.vincent-openai__results-wrapper > h3 {
+  display: inline-block;
+}
+
+.vincent-openai__results-wrapper[data-results="false"] > h3,
+.vincent-openai__results-wrapper[data-results="false"] > .vincent-openai__results-clear {
+  display: none;
+}
+
+.vincent-openai__results-clear:first-of-type {
+  background: none;
+  border: none;
+  font-size: 0.7em;
+  vertical-align: middle;
+  width: auto;
+}
+
+.vincent-openai__results-clear:first-of-type:hover {
+  font-weight: bold;
+  opacity: 1;
+}
+
+.vincent-openai__results-wrapper > details {
+  margin-bottom: 1em;
+}
+
+.vincent-openai__results-wrapper > details[data-new] {
+  animation: pulse 0.7s 2;
+}
+
+.vincent-openai__results-wrapper > details> summary:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.vincent-openai__results-wrapper > details> summary::after {
+  content: '\25BC';
+  display: inline-block;
+  font-size: 0.9em;
+  height: 20px;
+  margin-top: -10px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 20px;
+}
+
+.vincent-openai__results-wrapper > details[open] > summary::after {
+  content: '\25B2';
+}
+
+.vincent-openai__result--prompt {
+  background-color: rgba(40, 40, 200, 0.5);
+  padding: 0.5em;
+}
+
+.vincent-openai__result--answer {
+  background-color: rgba(50, 50, 50, 0.5);
+  font-style: italic;
+  padding: 0.5em;
+}
+
+.vincent-openai__result--heading {
+  font-style: normal;
+  font-weight: bold;
+}
+
+.vincent-openai__spinner {
+  animation: rotate 2s linear infinite;
+  height: 22px;
+  margin: 0.2em 0.5em;
+  stroke: black;
+  vertical-align: text-bottom;
+  width: 22px;
+}
+
+.vincent-openai__spinner > .path {
+  animation: dash 1.5s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
