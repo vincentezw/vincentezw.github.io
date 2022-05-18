@@ -19,6 +19,7 @@ window.vincentOpenAI = (function() {
   },
 
   settings = {
+    apiKey: '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', // can't do secrets in vanilla JS :(
     frequency_penalty: 1, // the higher the number, the less likely a repeat answer, 0-1
     max_tokens: 64, // max completion length
     presence_penalty: 1, // the higher, the more effort is put into new topics
@@ -49,17 +50,11 @@ window.vincentOpenAI = (function() {
       presence_penalty: settings.presence_penalty,
     };
 
-    const apiKey = !!sessionStorage.getItem('vincent-openai__key')
-      ? sessionStorage.getItem('vincent-openai__key')
-      : prompt('Please enter OpenAI API key', '');
-
-    sessionStorage.setItem('vincent-openai__key', apiKey);
-
     const results = await fetch("https://api.openai.com/v1/engines/davinci/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${settings.apiKey}`,
       },
       body: JSON.stringify(data),
     })

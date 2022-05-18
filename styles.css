@@ -124,7 +124,9 @@
 
 .vincent-openai__result--prompt {
   background-color: rgba(40, 40, 200, 0.5);
+  list-style: none;
   padding: 0.5em;
+  position: relative;
 }
 
 .vincent-openai__result--answer {
