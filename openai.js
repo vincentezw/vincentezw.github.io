@@ -19,7 +19,7 @@ window.vincentOpenAI = (function() {
   },
 
   settings = {
-    apiKey: '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',
+    apiKey: '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', // Github Pages doesn't do secrets :(
     frequency_penalty: 1, // the higher the number, the less likely a repeat answer, 0-1
     max_tokens: 64, // max completion length
     presence_penalty: 1, // the higher, the more effort is put into new topics
