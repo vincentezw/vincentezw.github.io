@@ -53,6 +53,8 @@ window.vincentOpenAI = (function() {
       ? sessionStorage.getItem('vincent-openai__key')
       : prompt('Please enter OpenAI API key', '');
 
+    sessionStorage.setItem('vincent-openai__key', apiKey);
+
     const results = await fetch("https://api.openai.com/v1/engines/davinci/completions", {
       method: "POST",
       headers: {
