@@ -56,7 +56,10 @@ window.vincentOpenAI = (function() {
       body: JSON.stringify(data),
     })
     .then(response => {
-      if (response.status!==200) { throw new Error(response.status) }
+      if (response.status !== 200) { 
+        throw new Error(response.status);
+        return;
+      }
       return response.json()
     })
     .catch((error) => {
