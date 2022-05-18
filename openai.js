@@ -40,6 +40,7 @@ window.vincentOpenAI = (function() {
   getResults = async (query) => {
     const data = {
       prompt: query,
+      temperature: 0,
       max_tokens: 64,
       top_p: 1.0,
       frequency_penalty: 0.0,
