@@ -50,7 +50,7 @@ window.vincentOpenAI = (function() {
       presence_penalty: settings.presence_penalty,
     };
 
-    const results = await fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
+    const results = await fetch("https://api.openai.com/v1/engines/davinci/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
