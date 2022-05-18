@@ -19,7 +19,6 @@ window.vincentOpenAI = (function() {
   },
 
   settings = {
-    apiKey: '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', // Github Pages doesn't do secrets :(
     frequency_penalty: 1, // the higher the number, the less likely a repeat answer, 0-1
     max_tokens: 64, // max completion length
     presence_penalty: 1, // the higher, the more effort is put into new topics
@@ -49,6 +48,10 @@ window.vincentOpenAI = (function() {
       frequency_penalty: settings.frequency_penalty,
       presence_penalty: settings.presence_penalty,
     };
+
+    const apiKey = !!sessionStorage.getItem('vincent-openai__key')
+      ? sessionStorage.getItem('vincent-openai__key')
+      : prompt('Please enter OpenAI API key', '');
 
     const results = await fetch("https://api.openai.com/v1/engines/davinci/completions", {
       method: "POST",
