@@ -20,6 +20,10 @@ window.vincentOpenAI = (function() {
 
   settings = {
     apiKey: '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',
+    frequency_penalty: 1, // the higher the number, the less likely a repeat answer, 0-1
+    max_tokens: 64, // max completion length
+    presence_penalty: 1, // the higher, the more effort is put into new topics
+    temperature: 0.5, // creative risk, between 0-1
   },
 
   clearError = () => {
@@ -40,11 +44,10 @@ window.vincentOpenAI = (function() {
   getResults = async (query) => {
     const data = {
       prompt: query,
-      temperature: 0,
-      max_tokens: 64,
-      top_p: 1.0,
-      frequency_penalty: 0.0,
-      presence_penalty: 0.0,
+      temperature: settings.temperature,
+      max_tokens: settings.max_tokens,
+      frequency_penalty: settings.frequency_penalty,
+      presence_penalty: settings.presence_penalty,
     };
 
     const results = await fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
