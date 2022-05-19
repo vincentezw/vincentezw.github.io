@@ -60,7 +60,7 @@ window.vincentOpenAI = (function() {
       ? sessionStorage.getItem('vincent-openai__key')
       : changeApiCode();
 
-    const results = await fetch("https://api.openai.com/v1/engines/davinci/completions", {
+    const results = await fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
