@@ -43,7 +43,7 @@
   background-color: rgba(40, 40, 200, 0.5);
 }
 
-.vincent-openai__prompt-wrapper > button, .vincent-openai__results-clear {
+.vincent-openai__submit, .vincent-openai__results-clear {
   background-color: rgba(100, 100, 240, 0.7);
   border: 2px solid black;
   height: 40px;
@@ -51,7 +51,7 @@
   width: 150px; 
 }
 
-.vincent-openai__prompt-wrapper > button:hover, .vincent-openai__results-clear:hover {
+.vincent-openai__submit:hover, .vincent-openai__results-clear:hover {
   cursor: pointer;
   opacity: 0.7;
 }
