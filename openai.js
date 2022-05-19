@@ -7,6 +7,7 @@ window.vincentOpenAI = (function() {
   },
 
   selectors = {
+    apiButton: 'vincent-openai__api-code',
     clearButton: 'vincent-openai__results-clear',
     errorSpan: 'vincent-openai__error',
     inputText: 'vincent-openai__prompt',
@@ -19,11 +20,16 @@ window.vincentOpenAI = (function() {
   },
 
   settings = {
-    apiKey: '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', // can't do secrets in vanilla JS :(
     frequency_penalty: 1, // the higher the number, the less likely a repeat answer, 0-1
     max_tokens: 64, // max completion length
     presence_penalty: 1, // the higher, the more effort is put into new topics
     temperature: 0.5, // creative risk, between 0-1
+  },
+
+  changeApiCode = () => {
+    const apiCode = prompt('Enter API code');
+    sessionStorage.setItem('vincent-openai__key', code);
+    return apiCode;
   },
 
   clearError = () => {
@@ -50,11 +56,15 @@ window.vincentOpenAI = (function() {
       presence_penalty: settings.presence_penalty,
     };
 
+    const apiCode = !!sessionStorage.getItem('vincent-openai__key')
+      ? sessionStorage.getItem('vincent-openai__key')
+      : changeApiCode();
+
     const results = await fetch("https://api.openai.com/v1/engines/davinci/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${settings.apiKey}`,
+        Authorization: `Bearer ${apiCode}`,
       },
       body: JSON.stringify(data),
     })
@@ -74,7 +84,8 @@ window.vincentOpenAI = (function() {
   },
 
   init = () => {
-    const clearButtons = document.getElementsByClassName(selectors.clearButton),
+    const apiButtons = document.getElementsByClassName(selectors.apiButton),
+          clearButtons = document.getElementsByClassName(selectors.clearButton),
           errorSpan = document.querySelector(`.${selectors.errorSpan}`),
           submitButton = document.querySelector(`.${selectors.submitButton}`),
           suggestions = document.getElementsByClassName(selectors.suggestion),
@@ -93,6 +104,8 @@ window.vincentOpenAI = (function() {
     Array.from(suggestions).forEach((suggestion)=> {
       suggestion.addEventListener('click', () => textArea.value = suggestion.textContent);
     });
+
+    Array.from(apiButtons).forEach((button) => button.addEventListener('click', changeApiCode));
 
     Array.from(clearButtons).forEach((button) => button.addEventListener('click', clearResults));
 

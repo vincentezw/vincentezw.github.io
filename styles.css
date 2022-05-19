@@ -80,7 +80,8 @@
   display: none;
 }
 
-.vincent-openai__results-clear:first-of-type {
+.vincent-openai__results-clear:first-of-type,
+.vincent-openai__api-code {
   background: none;
   border: none;
   font-size: 0.7em;
@@ -88,7 +89,8 @@
   width: auto;
 }
 
-.vincent-openai__results-clear:first-of-type:hover {
+.vincent-openai__results-clear:first-of-type:hover,
+.vincent-openai__api-code:hover {
   font-weight: bold;
   opacity: 1;
 }
