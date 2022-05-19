@@ -91,6 +91,7 @@
 
 .vincent-openai__results-clear:first-of-type:hover,
 .vincent-openai__api-code:hover {
+  cursor: pointer;
   font-weight: bold;
   opacity: 1;
 }

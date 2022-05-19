@@ -69,8 +69,11 @@ window.vincentOpenAI = (function() {
       body: JSON.stringify(data),
     })
     .then(response => {
-      if (response.status !== 200) { 
-        throw new Error(response.status);
+      if (response.status !== 200) {
+        const errorCode = reponse.status === 401
+          ? `${response.status} - check API code`
+          : reponse.status;
+        throw new Error(errorCode);
         return;
       }
       return response.json()
