@@ -27,7 +27,7 @@ window.vincentOpenAI = (function() {
   },
 
   changeApiCode = () => {
-    const apiCode = prompt('Enter API code', sessionStorage.getItem('vincent-openai__query'));
+    const apiCode = prompt('Enter API code', sessionStorage.getItem('vincent-openai__key'));
     sessionStorage.setItem('vincent-openai__key', code);
     return apiCode;
   },
