@@ -31,7 +31,8 @@ window.vincentOpenAI = (function() {
       ? sessionStorage.getItem('vincent-openai__key')
       : '';
     const apiCode = prompt('Enter API code', prevCode);
-    sessionStorage.setItem('vincent-openai__key', apiCode);
+    // save code when entered
+    if (!!apiCode) { sessionStorage.setItem('vincent-openai__key', apiCode); }
     return apiCode;
   },
 
