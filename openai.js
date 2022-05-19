@@ -70,9 +70,9 @@ window.vincentOpenAI = (function() {
     })
     .then(response => {
       if (response.status !== 200) {
-        const errorCode = reponse.status === 401
+        const errorCode = response.status === 401
           ? `${response.status} - check API code`
-          : reponse.status;
+          : response.status;
         throw new Error(errorCode);
         return;
       }
