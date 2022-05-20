@@ -30,7 +30,7 @@ window.vincentOpenAI = (function() {
     const prevCode = !!sessionStorage.getItem('vincent-openai__key')
       ? sessionStorage.getItem('vincent-openai__key')
       : '';
-    const apiCode = prompt('Enter API code', prevCode);
+    const apiCode = prompt('Enter API key', prevCode);
     // save code when entered
     if (!!apiCode) { sessionStorage.setItem('vincent-openai__key', apiCode); }
     return apiCode;
@@ -75,7 +75,7 @@ window.vincentOpenAI = (function() {
     .then(response => {
       if (response.status !== 200) {
         const errorCode = response.status === 401
-          ? `${response.status} - check API code`
+          ? `${response.status} - check API key`
           : response.status;
         throw new Error(errorCode);
         return;
